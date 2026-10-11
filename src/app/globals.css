@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --color-xom-indigo-900: #1E1147;
+  --color-xom-indigo-700: #2E1A6B;
+  --color-xom-indigo-500: #3B2A8C;
+  --color-xom-indigo-400: #5546A8;
+  --color-xom-gold-500:  #F2C14E;
+  --color-xom-gold-400:  #F7CE6A;
+  --color-xom-gold-300:  #FFD97A;
+  --color-xom-surface:   #FAFAFB;
+  --color-xom-ink:       #0F0A2E;
+  --color-xom-muted:     #5B5478;
+}
+
+html, body { height: 100%; }
+
+body {
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(59,42,140,0.14), transparent 60%),
+    radial-gradient(900px 500px at 90% 110%, rgba(242,193,78,0.12), transparent 55%),
+    var(--color-xom-surface);
+  min-height: 100dvh;
+}
+
+.focus-gold:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(250,250,251,1), 0 0 0 5px rgba(242,193,78,0.45);
+  border-radius: 10px;
+}
+
+.glass-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.62));
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.65);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 20px 60px -24px rgba(46,26,107,0.30),
+    0 6px 20px -12px rgba(46,26,107,0.18);
+}
+
+.glass-header {
+  background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.40));
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid rgba(255,255,255,0.55);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  font-variation-settings: "opsz" 96, "SOFT" 30;
+}
+
+.dept-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease; }
+.dept-card:hover { transform: translateY(-1px); }
+.dept-card[data-selected="true"] {
+  border-color: var(--color-xom-gold-500);
+  background: linear-gradient(180deg, rgba(242,193,78,0.10), rgba(255,255,255,0.65));
+  box-shadow: 0 0 0 3px rgba(242,193,78,0.28), 0 12px 32px -16px rgba(46,26,107,0.30);
+}
+
+/* Subtle scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(46,26,107,0.18);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(46,26,107,0.28); background-clip: padding-box; }
+
+/* Autofill override — kill Chrome yellow */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #0F0A2E;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,0.9) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Card hover — subtle lift */
+.dept-card[data-selected="false"]:hover {
+  border-color: rgba(46,26,107,0.28);
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.65));
+}
